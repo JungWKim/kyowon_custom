@@ -1,3 +1,11 @@
+# installed package lists : 
+# 1. opencv (full package)
+# 2. matplotlib with korean lang
+# 3. numpy (default)
+# 4. pandas (default)
+# 5. sklearn (default)
+# 6. seaborn (default)
+
 FROM public.ecr.aws/j1r0q0g6/notebooks/notebook-servers/jupyter-tensorflow-cuda-full:v1.5.0
 
 ENV NB_USER jovyan
@@ -11,22 +19,7 @@ RUN apt-get update
 RUN apt-get install -y libopencv-dev
 
 USER jovyan
-RUN pip install opencv-python
-
-# install numpy
-RUN pip install numpy
-
-# install scikit-learn
-RUN pip3 install -U scikit-learn
-
-# install pandas
-RUN pip install pandas
-
-# install seaborn (dependencies: numpy, pandas, matplotlib)
-RUN pip install seaborn
-
-# install keras-cv
-RUN pip install keras-cv --upgrade
+RUN pip install opencv-contrib-python
 
 # matplotlib korean font setting
 USER root
@@ -34,6 +27,9 @@ RUN apt-get install -y apt-utils
 RUN apt-get install -y fonts-nanum*
 RUN cp /usr/share/fonts/truetype/nanum/Nanum* /usr/share/fonts/truetype/dejavu/
 RUN cp /usr/share/fonts/truetype/nanum/Nanum* /opt/conda/lib/python3.8/site-packages/matplotlib/mpl-data/fonts/ttf/
+
+# install keras-cv
+RUN pip install keras-cv --upgrade
 
 EXPOSE 8888
 

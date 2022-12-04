@@ -13,6 +13,21 @@ RUN apt-get install -y libopencv-dev
 USER jovyan
 RUN pip install opencv-python
 
+# install numpy
+RUN pip install numpy
+
+# install scikit-learn
+RUN pip3 install -U scikit-learn
+
+# install pandas
+RUN pip install pandas
+
+# install seaborn (dependencies: numpy, pandas, matplotlib)
+RUN pip install seaborn
+
+# install keras-cv
+RUN pip install keras-cv --upgrade
+
 # matplotlib korean font setting
 USER root
 RUN apt-get install -y apt-utils
