@@ -24,6 +24,13 @@ RUN pip install opencv-contrib-python
 # install keras-cv
 RUN pip install keras-cv --upgrade
 
+# matplotlib korean font setting
+USER root
+RUN apt-get install -y apt-utils
+RUN apt-get install -y fonts-nanum*
+RUN cp /usr/share/fonts/truetype/nanum/Nanum* /usr/share/fonts/truetype/dejavu/
+RUN cp /usr/share/fonts/truetype/nanum/Nanum* /opt/conda/lib/python3.8/site-packages/matplotlib/mpl-data/fonts/ttf/
+
 # upgrade scikit-learn
 RUN conda install scikit-learn
 
@@ -35,13 +42,6 @@ RUN conda install pandas
 
 # upgrade seaborn
 RUN conda install seaborn
-
-# matplotlib korean font setting
-USER root
-RUN apt-get install -y apt-utils
-RUN apt-get install -y fonts-nanum*
-RUN cp /usr/share/fonts/truetype/nanum/Nanum* /usr/share/fonts/truetype/dejavu/
-RUN cp /usr/share/fonts/truetype/nanum/Nanum* /opt/conda/lib/python3.8/site-packages/matplotlib/mpl-data/fonts/ttf/
 
 EXPOSE 8888
 
