@@ -22,7 +22,7 @@ USER jovyan
 RUN pip install opencv-contrib-python
 
 # install keras-cv
-#RUN pip install keras-cv --upgrade
+RUN pip install keras-cv --upgrade
 
 # matplotlib korean font setting
 USER root
@@ -32,16 +32,16 @@ RUN cp /usr/share/fonts/truetype/nanum/Nanum* /usr/share/fonts/truetype/dejavu/
 RUN cp /usr/share/fonts/truetype/nanum/Nanum* /opt/conda/lib/python3.8/site-packages/matplotlib/mpl-data/fonts/ttf/
 
 # upgrade scikit-learn
-#RUN conda install scikit-learn
+RUN conda install scikit-learn -y
 
 # upgrade numpy
-#RUN conda install numpy
+RUN conda install numpy -y
 
 # upgrade pandas
-#RUN conda install pandas
+RUN conda install pandas -y
 
 # upgrade seaborn
-#RUN conda install seaborn
+RUN conda install seaborn -y
 
 EXPOSE 8888
 
