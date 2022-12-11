@@ -21,6 +21,9 @@ RUN apt-get install -y libopencv-dev
 USER jovyan
 RUN pip install opencv-contrib-python
 
+# upgrade tensorflow
+RUN pip install tensorflow-gpu
+
 # install keras-cv
 RUN pip install keras-cv --upgrade
 
@@ -29,8 +32,8 @@ RUN pip3 uninstall -y scikit-learn
 RUN pip3 install -U scikit-learn 
 
 # upgrade pandas
-RUN pip uninstall -y pandas
-RUN pip install pandas
+#RUN pip uninstall -y pandas
+#RUN pip install pandas
 
 # upgrade seaborn
 RUN pip uninstall -y seaborn
