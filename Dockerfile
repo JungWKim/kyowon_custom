@@ -24,6 +24,18 @@ RUN pip install opencv-contrib-python
 # install keras-cv
 RUN pip install keras-cv --upgrade
 
+# upgrade scikit-learn
+RUN conda install scikit-learn
+
+# upgrade numpy
+RUN conda install numpy
+
+# upgrade pandas
+RUN conda install pandas
+
+# upgrade seaborn
+RUN conda install seaborn
+
 # matplotlib korean font setting
 USER root
 RUN apt-get install -y apt-utils
