@@ -36,6 +36,7 @@ RUN pip install pandas
 RUN pip uninstall -y seaborn
 RUN pip install seaborn 
 
+USER root
 EXPOSE 8888
 
 CMD ["sh","-c", "jupyter notebook --notebook-dir=${HOME} --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]
