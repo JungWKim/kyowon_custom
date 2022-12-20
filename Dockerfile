@@ -23,7 +23,7 @@ RUN pip install opencv-contrib-python
 
 # upgrade scikit-learn
 ## sklearn 0.24.2 -> 1.2.0
-## numpy 1.22.4 will be installed (require at lease 1.17.3)
+## numpy 1.22.4 will be installed (require at least 1.17.3)
 RUN pip3 install -U scikit-learn
 
 # upgrade tensorflow-gpu
@@ -32,6 +32,10 @@ RUN pip3 install -U scikit-learn
 ## keras 2.4.3 -> 2.11.0
 ## Conflict occur (kfp 1.6.3 require 0.9 <= absl-py <= 0.11 but tensorflow-gpu require at least 1.0.0)
 RUN pip install -U tensorflow-gpu
+
+# upgrade numpy
+## scipy 1.7.0 requires 1.16.5 <= numpy <= 1.23.0 so upgrading numpy is not recommended
+# RUN pip install -U numpy
 
 # install keras-cv
 ## keras_cv 0.3.4 will be installed
