@@ -1,4 +1,4 @@
-# This dockerfile is for kubeflow 1.15
+# This dockerfile for kubeflow 1.15
 ## installed package list
 ### 1. matplotlib with korean language
 ### 2. opencv
