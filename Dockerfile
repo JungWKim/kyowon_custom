@@ -21,23 +21,29 @@ RUN apt-get install -y libopencv-dev
 USER jovyan
 RUN pip install opencv-contrib-python
 
-# upgrade tensorflow
-RUN pip install tensorflow-gpu
+# upgrade scikit-learn
+## sklearn 0.24.2 -> 1.2.0
+## numpy 1.22.4 will be installed (require at lease 1.17.3)
+RUN pip3 install -U scikit-learn
+
+# upgrade tensorflow-gpu
+## tensorflow-gpu 2.5.0 -> 2.11.0
+## numpy 1.24.0 will be installed (require at least 1.20.0)
+## keras 2.4.3 -> 2.11.0
+## Conflict occur (kfp 1.6.3 require 0.9 <= absl-py <= 0.11 but tensorflow-gpu require at least 1.0.0)
+RUN pip install -U tensorflow-gpu
 
 # install keras-cv
-RUN pip install keras-cv --upgrade
-
-# upgrade scikit-learn
-RUN pip3 uninstall -y scikit-learn
-RUN pip3 install -U scikit-learn 
+## keras_cv 0.3.4 will be installed
+RUN pip install keras-cv
 
 # upgrade pandas
-#RUN pip uninstall -y pandas
-#RUN pip install pandas
+## pandas 1.2.4 -> 1.5.2
+RUN pip install -U pandas
 
 # upgrade seaborn
-RUN pip uninstall -y seaborn
-RUN pip install seaborn 
+## seaborn 0.11.1 -> 0.12.1
+RUN pip install -U seaborn
 
 USER root
 EXPOSE 8888
